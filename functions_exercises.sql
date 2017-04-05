@@ -1,11 +1,20 @@
-select * from employees where first_name in ('Irena', 'Vidya', 'Maya') and gender = "M" order by first_name;
-select * from employees where first_name in ('Irena', 'Vidya', 'Maya') and gender = "M" order by first_name, last_name;
-select * from employees where first_name in ('Irena', 'Vidya', 'Maya') and gender = "M" order by last_name, first_name;
+SELECT count(*), gender 
+FROM employees 
+WHERE first_name IN ('Irena', 'Vidya', 'Maya') 
+GROUP BY gender;
 
 
-select * from employees where last_name like 'E%' or last_name like '%e' order by emp_no;
-select * from employees where last_name like 'E%' and last_name like '%e' order by emp_no;
-select * from employees where last_name like 'E%e' order by emp_no;
+SELECT concat(first_name, " ", last_name) AS "Full Name" 
+FROM employees 
+WHERE concat(first_name, " ", last_name) LIKE 'E%e';
 
 
-select * from employees where hire_date like "199%" and birth_date like "%-12-25" order by birth_date, hire_date DESC;
+SELECT concat(first_name, " ", last_name) AS "Full Name", datediff(now(),hire_date) AS "Days Worked" 
+FROM employees WHERE hire_date LIKE "199%" AND birth_date LIKE "%-12-25";
+
+
+SELECT count(*), first_name, last_name 
+FROM employees 
+WHERE last_name LIKE "%q%" AND last_name NOT LIKE "%qu%" 
+GROUP BY first_name, last_name
+ORDER BY count(*) DESC;
