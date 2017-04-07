@@ -11,11 +11,11 @@ WHERE hire_date IN (
 
 -- Find all the titles held by all employees with the first name Aamod.
 
-SELECT * 
-FROM employees 
-WHERE titles IN (
-	SELECT titles 
-	FROM titles 
+SELECT title
+FROM titles 
+WHERE emp_no IN (
+	SELECT emp_no 
+	FROM employees 
 	WHERE first_name = "Aamod"
 );
 
